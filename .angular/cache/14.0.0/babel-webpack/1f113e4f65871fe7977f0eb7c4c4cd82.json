@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createFeatureSelector, createSelector } from '@ngrx/store';\nimport { selectAll } from '../reducers/category.reducer';\nexport const selectCategoriesState = createFeatureSelector('categories');\nexport const selectAllCategories = createSelector(selectCategoriesState, selectAll);","map":null,"metadata":{},"sourceType":"module"}

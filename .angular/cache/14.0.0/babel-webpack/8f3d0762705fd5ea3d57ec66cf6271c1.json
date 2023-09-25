@@ -1,0 +1,1 @@
+{"ast":null,"code":"var canUseWeakMap = typeof WeakMap === 'function' && !(typeof navigator === 'object' && navigator.product === 'ReactNative');\nexport { canUseWeakMap }; //# sourceMappingURL=canUse.js.map","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createAction, props } from \"@ngrx/store\";\nexport const socketEmit = createAction('[Socket] Socket Emit', props());","map":null,"metadata":{},"sourceType":"module"}

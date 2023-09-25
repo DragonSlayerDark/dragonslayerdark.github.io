@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class HeaderChildAbstract {\n  constructor() {}\n\n  back() {\n    window.history.back();\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

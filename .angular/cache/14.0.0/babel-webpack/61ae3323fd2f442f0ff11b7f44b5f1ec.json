@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createAction } from \"@ngrx/store\";\nexport const addRequestToQueue = createAction('[Pawl] Add Request To Queue');\nexport const removeRequestFromQueue = createAction('[Pawl] Remove Request From Queue');","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createFeatureSelector, createSelector } from \"@ngrx/store\";\nexport const getState = createFeatureSelector('pawl');\nexport const selectLoading = createSelector(getState, state => state.numberRequests > 0);","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"function isNonEmptyArray(value) {\n  return Array.isArray(value) && value.length > 0;\n}\n\nexport { isNonEmptyArray }; //# sourceMappingURL=arrays.js.map","map":null,"metadata":{},"sourceType":"module"}
