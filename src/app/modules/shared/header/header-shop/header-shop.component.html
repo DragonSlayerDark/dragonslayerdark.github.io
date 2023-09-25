@@ -1,0 +1,44 @@
+<div class=" grid grid-cols-12 gap-4 m-6 mt-8 mb-0">
+
+    <div (click)="back()" class="col-span-1 flex items-center justify-center">
+        <img class="w-7" src="assets/back.svg">
+    </div>
+
+    <ng-container *ngIf="selectedPetID && pet$ | async as pet">
+        <div class=" col-span-4 flex items-center justify-center">
+            <img class="h-20 w-20 rounded-full object-cover border-4 object-top bg-white" [ngStyle]="{'border-color': '#45B45A'}" [src]="pet.attributes['photo'].data?.attributes?.url | image">
+        </div>
+
+        <div class="col-span-4 items-center justify-center" *ngIf="{ pets: pets$ | async}as data">
+            <div class=" col-span-1 font-bold text-2xl text-left  " style="color: #ffffff">
+                Tienda
+            </div>
+            <div class="accordeon ">
+                <label class="accordeon_link">{{pet.attributes.name}}<input type="checkbox"></label>
+                <div class="accordeon_item">
+                    <p> <span class="accordeon_option" (click)="changePet(item.id, item.attributes.pet_type.data['id'])" *ngFor="let item of data.pets">  {{item.attributes.name}} <br></span> </p>
+                </div>
+            </div>
+
+        </div>
+
+    </ng-container>
+
+
+    <div class="col-span-2 flex items-center justify-center">
+        <!-- <img class="h-5 float-right" src="assets/icons/search.svg"> -->
+        <div class="flex" (click)="goToCart()">
+            <img class="h-6 float-right m-2" src="assets/icons/shopcart.svg">
+            <ng-container *ngIf="cartItemsLength | async; else elseTemplate">
+                <span class="cartitems-number">{{cartItemsLength | async}} </span>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <span class="cartitems-number"> 0 </span>
+            </ng-template>
+
+
+        </div>
+    </div>
+
+
+</div>

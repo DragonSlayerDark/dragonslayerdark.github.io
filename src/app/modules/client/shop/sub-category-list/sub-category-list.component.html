@@ -1,0 +1,29 @@
+<ng-container *ngIf="{
+    subCategories: subCategories$ | async
+} as data">
+    <div class="content content-margintop rounded-3xl w-full pt-6 pb-24 justify-center box-shadow-base">
+        <div class="header-category-items  text-lg grid grid-cols-12" routerLink="/shop/categories">
+            <div class="col-span-5 text-blue ">
+                {{selectedPetTypeName}}
+            </div>
+            <div class=" col-span-2">
+                <img class=" mx-auto relative" src="assets/arrow-right.svg">
+            </div>
+            <div class="col-span-5 text-yellow">
+                {{selectedCategoryName}}
+            </div>
+        </div>
+        <div class="mt-2">
+            <div class="category-item grid grid-cols-12 " (click)="selectSubCategory(item.id, item.attributes.name)" *ngFor="let item of data.subCategories">
+                <div class=" col-span-11">
+                    {{ item.attributes.name }}
+                </div>
+                <div class="col-span-1">
+                    <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ng-container>

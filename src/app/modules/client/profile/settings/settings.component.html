@@ -1,0 +1,46 @@
+<div class="content content-margintop rounded-3xl w-full  pb-6 justify-center box-shadow-base">
+
+    <div class=" px-11 ">
+        <div class=" grid-cols-4  w-full my-4 mb-6 text-gray-500 ">
+            <div>
+                <img class=" w-36 my-10 mx-auto relative" src="assets/icons/ajustes.svg">
+            </div>
+        </div>
+        <!-- <button class=" w-full p-2 bg-red-500 text-white font-bold rounded-full " (click)="eliminarCuenta() "> Eliminar cuenta </button> -->
+    </div>
+
+    <div class="category-item grid grid-cols-12   ">
+        <div class=" col-span-11">
+            Notificaciones
+        </div>
+
+    </div>
+
+    <div [routerLink]="['/profile', 'editPassword']" class="category-item grid grid-cols-12   ">
+        <div class=" col-span-11">
+            Cambiar contraseña
+        </div>
+        <div class="col-span-1">
+            <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+        </div>
+    </div>
+
+    <div class="category-item grid grid-cols-12   ">
+        <div class=" col-span-11">
+            Términos y condiciones
+        </div>
+        <div class="col-span-1">
+            <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+        </div>
+    </div>
+
+    <div class="category-item grid grid-cols-12  " (click)="eliminarCuenta() ">
+        <div class=" col-span-11">
+            Eliminar cuenta
+        </div>
+        <div class="col-span-1">
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,62 @@
+<div class="container ">
+    <form [formGroup]="form" (submit)="enviar()">
+        <div class="row justify-content-md-center p-4 pt-0 ">
+
+
+            <div class="col-lg-4 login-container  p-4">
+
+                <div class="text-center">
+                    <img class="mx-auto w-48 mB-10" src="../assets/logo-orange.svg" alt="logo" />
+                    <span class="text-gray-400 text-lg my-10">REGISTRATE</span>
+                    <h4 class="text-xl text-gray-400 font-semibold mt-1 mb-12 pb-1">Ingresa a tus datos</h4>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="exampleInputEmail1" class=" w-full text-center font-bold text-orange my-4 block">Correo electrónico</label>
+                    <input formControlName="correo" type="email" class=" text-input text-center  form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo electrónico">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="password" class=" w-full text-center font-bold text-orange my-4 block">Contraseña(Minimo 6 caracteres)</label>
+                    <input formControlName="password" type="password" class=" text-input text-center  form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        id="password" placeholder="Contraseña">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="passwordConfirm" class=" w-full text-center font-bold text-orange my-4 block">Confirmacion contraseña (Minimo 6 caracteres)</label>
+                    <input formControlName="passwordConfirm" type="password" class=" text-input text-center  form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        id="passwordConfirm" placeholder="Confirme Contraseña">
+                </div>
+                <div class="form-group mb-4">
+                    <!-- first name -->
+                    <label for="exampleInputPassword1" class=" w-full text-center font-bold text-orange my-4 block">Nombre(s)</label>
+                    <input formControlName="firstName" type="text" class=" text-input text-center  form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        id="exampleInputPassword1" placeholder=" Nombre">
+                </div>
+
+                <div class="form-group">
+                    <!-- last name -->
+                    <label for="exampleInputPassword1" class=" w-full text-center font-bold text-orange my-4 block">Apellido Paterno</label>
+                    <input formControlName="lastName" type="text" class=" text-input text-center  form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        id="exampleInputPassword1" placeholder=" Apellido Paterno">
+                </div>
+                <div class="form-group">
+                  <!--second last name -->
+                  <label for="exampleInputPassword1" class=" w-full text-center font-bold text-orange my-4 block">Apellido Materno</label>
+                  <input formControlName="secondLastName" type="text"
+                    class=" text-input text-center  form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    id="exampleInputPassword1" placeholder=" Apellido Materno">
+                </div>
+                <button type="submit" class="single_add_button_orange w-full mt-8">Crear cuenta</button>
+                <small class="w-full text-center font-bold text-orange my-4 block" *ngIf="this.registerError">
+                  La cuenta de correo ya esta en uso
+                </small>
+                <div class=" w-full mt-4 text-center text-gray-400 block">
+                    <p class="mb-0 mr-2" [routerLink]="['/auth', 'login']" routerLinkActive="router-link-active">
+                        Ya tengo cuenta
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+.active img {
+    filter: invert(58%) sepia(48%) saturate(325%) hue-rotate(249deg) brightness(84%) contrast(87%);
+    height: 30px !important;
+    margin-bottom: 5px;
+    transition: all 0.5s;
+}
+
+.active span {
+    color: #AB78AE !important;
+    font-weight: 600 !important;
+}
+
+.active {
+    transition: all 0.5s;
+    margin-top: -40px;
+    padding-top: 20px;
+    background: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -39px 41px -28px rgba(0, 0, 0, 0.5);
+}
+
+.notifications-icon {
+  color: white;
+}

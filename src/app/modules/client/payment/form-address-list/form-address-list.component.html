@@ -1,0 +1,13 @@
+<ng-container *ngIf="showAddresses">
+    <app-list-address (selectedAddressEvent)="selectedAddress($event)" [selectAddress]="true"></app-list-address>
+    <div class=" grid grid-cols-12 pr-6">
+        <div class="px-3 pl-10 col-span-12 text-left ">
+            <button class=" single_add_button_orange " (click)="showCreateAddress = true; showAddresses = false;"> Agregar nueva dirección </button>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="showCreateAddress">
+    <app-create-address (addAddressSuccess)="showCreateAddress = false; showAddresses = true"></app-create-address>
+</ng-container>

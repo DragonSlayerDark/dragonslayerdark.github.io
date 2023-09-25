@@ -1,0 +1,10 @@
+<div [ngClass]="{'header-normal': hsection == 'normal','header-section': hsection != 'normal'  }" class=" flex justify-center items-top bg-contain header">
+    <ng-container [ngSwitch]="hsection">
+        <app-header-pets *ngSwitchCase="PAWLClientRoutes.MY_PETS"></app-header-pets>
+        <app-header-shop *ngSwitchCase="PAWLClientRoutes.SHOP"></app-header-shop>
+        <app-header-profile *ngSwitchCase="PAWLClientRoutes.PROFILE"></app-header-profile>
+        <ng-container *ngSwitchDefault>
+            <img class=" h-full mt-6 " src="assets/logo.png" alt="">
+        </ng-container>
+    </ng-container>
+</div>

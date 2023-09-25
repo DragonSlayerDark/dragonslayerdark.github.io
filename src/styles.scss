@@ -1,0 +1,488 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+body {
+    min-height: calc(100vh + 60px); // 58px for footer, 77px for navbar
+}
+
+.content {
+    @apply pt-2;
+}
+
+.content-margintop {
+    margin-top: -25px;
+    display: block;
+}
+
+.outshadow {
+    box-shadow: 10px 10px 20px #E2DBCA;
+}
+
+.text-blue {
+    color: #5CCBC2;
+}
+
+.box-shadow-base {
+    box-shadow: inset 0 0 8px #E2DBCA;
+}
+
+.form-group {
+    @apply mb-4;
+    label {
+        @apply mr-2 font-bold;
+    }
+}
+
+input,
+select {
+    @apply border outline-none text-lg;
+}
+
+.ng-invalid {
+    @apply border-red-300;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.text-blue {
+    color: #5CCBC2;
+}
+
+.text-yellow {
+    color: #FCAF3D;
+}
+
+.text-purple {
+    color: #AB78AE;
+}
+
+.text-orange {
+    color: #D08A6C;
+}
+
+.category-item {
+    color: #5CCBC2;
+    border-radius: 11px;
+    max-height: 58px !important;
+    box-shadow: 0px 0px 14px -3px rgb(191 188 188);
+    @apply py-4 m-2 font-bold
+}
+
+.pet-item {
+    color: #5CCBC2;
+    border-radius: 11px;
+    max-height: 80px !important;
+    box-shadow: 0px 0px 14px -3px rgb(191 188 188);
+    @apply m-2 my-5 font-bold
+}
+
+.category-item div:first-child {
+    @apply mx-8
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.divider {
+    box-shadow: inset 0px 0px 3px 2px rgb(114 86 9 / 10%);
+}
+
+.header-category-items {
+    border-top-left-radius: 27px;
+    border-top-right-radius: 27px;
+    box-shadow: 0px 0px 14px -3px rgb(191 188 188);
+    margin-top: -6px;
+    @apply w-full text-center py-3 font-bold
+}
+
+.vaccine-header-category {
+    border-top-left-radius: 27px;
+    border-top-right-radius: 27px;
+    box-shadow: 0px -10px 12px -3px rgb(191, 188, 188);
+    margin-top: -6px;
+    display: block;
+    background-color: #e6e6e6;
+    @apply w-full text-center py-3 text-gray-300 font-bold
+}
+
+.vaccine-header li .active {
+    background-color: white !important;
+    box-shadow: 0px -10px 12px -3px rgb(191, 188, 188);
+    @apply text-gray-400
+}
+
+.cartitems-number {
+    margin-left: -15px;
+    margin-top: -10px;
+    box-shadow: 0px 0px 7px 1px rgb(144 88 8);
+    @apply align-middle bg-white w-7 h-7 p-1 text-center rounded-full relative block font-bold text-red-600
+}
+
+.single_add_button {
+    background-color: #13C7E8;
+    box-shadow: 0px 0px 14px -3px rgb(191 188 188);
+    @apply text-center text-sm p-2 ml-2 font-bold text-white rounded-full w-full
+}
+
+.single_add_button_red {
+    background-color: #AC4134;
+    box-shadow: 0px 0px 14px -3px rgb(191 188 188);
+    @apply text-center text-sm p-2 ml-2 font-bold text-white rounded-full w-full
+}
+
+.single_add_button_orange {
+    background-color: #fb923c;
+    box-shadow: 0px 0px 14px -3px rgb(191 188 188);
+    @apply text-center text-sm p-2 ml-2 font-bold text-white rounded-full w-full
+}
+
+.modify_cart_button {
+    background-color: #EC8D00;
+    @apply text-center font-bold text-sm w-full
+}
+
+.accordeon_item {
+    display: grid;
+    grid-template-rows: var(--rows, 0fr);
+    transition: .3s grid-template-rows;
+}
+
+.accordeon {
+    @apply text-center absolute
+}
+
+.accordeon_link {
+    @apply text-white font-bold py-3 block p-2
+}
+
+.accordeon_item p {
+    overflow: hidden;
+    @apply w-full
+}
+
+.accordeon_option {
+    @apply w-full relative block text-white p-2 border-t-2 w-full
+}
+
+.accordeon input {
+    display: none;
+}
+
+.accordeon:has(:checked) {
+    --rows: 1fr;
+    .accordeon_item {
+        background-color: #fdae3e;
+        @apply shadow-lg rounded-b-lg
+    }
+}
+
+select {
+    appearance: none;
+    background-image: url(./assets/drop-down.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+}
+
+.vaccine-input-back {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(253 253 253 / 32%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+#vaccine-input-container {
+    width: 80%;
+    display: block;
+    background-color: white;
+    left: 10%;
+    top: 25%;
+    z-index: 100000;
+    @apply drop-shadow-xl fixed rounded-3xl
+}
+
+#vaccine-input-container .title {
+    border-top-right-radius: 30px !important;
+    border-top-left-radius: 30px !important;
+    background-color: #fdae3e;
+    color: white !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    @apply text-center pt-4 text-xl
+}
+
+#vaccine-input-container .vaccine-content {
+    @apply p-12 pt-2
+}
+
+#vaccine-input-container .vaccine-content input {
+    box-shadow: inset 0 0 8px #E2DBCA;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+#vaccine-input-container button {
+    width: 90% !important;
+    border-radius: 20px !important;
+    color: white !important;
+    min-width: 100px !important;
+    padding: 10px !important;
+    position: relative !important;
+    margin: 5px !important;
+    box-shadow: 3px 3px 8px #a2a2a2 !important;
+}
+
+#vaccine-input-container .vaccine-content select {
+    box-shadow: inset 0 0 8px #E2DBCA;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+    -webkit-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+    border-width: 1px;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    text-transform: none;
+    background-image: url(./assets/drop-down.svg);
+}
+
+.swalcontainer {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.swalpopup {
+    border-radius: 30px !important;
+    width: 80% !important;
+    color: #9ba3af !important;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem;
+    box-shadow: 10px 10px 20px #a2a2a2 !important;
+    padding-top: 70px !important;
+}
+
+.swalicon {
+    margin-top: 0px !important;
+}
+
+.swaltitle {
+    border-top-right-radius: 30px !important;
+    border-top-left-radius: 30px !important;
+    background-color: #fdae3e;
+    color: white !important;
+    position: absolute !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+}
+
+.swalbutton {
+    width: 100% !important;
+    border-radius: 20px !important;
+    color: white !important;
+    min-width: 100px !important;
+    padding: 10px !important;
+    position: relative !important;
+    margin: 5px !important;
+    box-shadow: 3px 3px 8px #a2a2a2 !important;
+}
+
+.swalcnl {
+    background-color: gray;
+}
+
+.swaldelete {
+    background-color: #cc4141;
+}
+
+.swalaccept {
+    background-color: rgb(251 146 60);
+}
+
+cards {
+    @apply pt-2 rounded-3xl w-full mt-6 pb-4 justify-center box-shadow-base;
+    display: block;
+    margin-top: -30px;
+}
+
+cards div label div {
+    color: #AB78AE;
+    border-radius: 11px;
+    max-height: 80px !important;
+    min-height: 60px !important;
+    box-shadow: 0px 0px 14px -3px rgb(191 188 188);
+    @apply m-4 my-5 font-bold;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-back {
+    background-color: #FFFDF2;
+}
+
+// @keyframes jump {
+//     0% {
+//         padding-bottom: 0px;
+//         opacity: 0;
+//         width: 200px;
+//     }
+//     25% {
+//         padding-bottom: 20px;
+//         width: 100px;
+//     }
+//     50% {
+//         padding-bottom: 0px;
+//         opacity: 1;
+//         width: 200px;
+//     }
+//     75% {
+//         padding-bottom: 20px;
+//         width: 110px;
+//     }
+//     100% {
+//         padding-bottom: 0px;
+//         width: 200px;
+//     }
+// }
+@keyframes jump {
+    0% {
+        padding-bottom: 0px;
+        opacity: 0;
+    }
+    25% {
+        padding-bottom: 120px;
+    }
+    50% {
+        padding-bottom: 0px;
+    }
+    75% {
+        padding-bottom: 120px;
+    }
+    100% {
+        padding-bottom: 0px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeintop {
+    0% {
+        opacity: 0;
+        top: -300px;
+    }
+    100% {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+@keyframes fadeinbottom {
+    0% {
+        opacity: 0;
+        bottom: -300px;
+    }
+    100% {
+        opacity: 1;
+        bottom: 0px;
+    }
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.inilogo {
+    padding-bottom: 0px;
+    width: 200px;
+    animation-name: jump;
+    animation-duration: 4s;
+}
+
+.plecatop {
+    animation-name: fadeintop;
+    animation-duration: 2s;
+}
+
+.plecabottom {
+    animation-name: fadeinbottom;
+    animation-duration: 2s;
+}
+
+.inicontainer {
+    animation-name: fadeout;
+    animation-duration: 1s;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+}
+
+#payment-form {
+    box-shadow: inset 0 0 8px #E2DBCA !important;
+    width: 100% !important;
+    border-radius: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+#payment-form input {
+    box-shadow: inset 0 0 8px #E2DBCA !important;
+    border-radius: 1rem !important;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+#payment-form .submit {
+    background-color: #13C7E8;
+    box-shadow: 0px 0px 14px -3px rgb(191 188 188);
+    @apply text-center text-sm p-2 ml-2 font-bold text-white rounded-full w-full
+}
+
+oxxo-button button {
+    width: 100% !important;
+}
+
+.p-PaymentDetails-group {
+    display: none !important;
+}
+
+confirm-payment {
+    text-align: center;
+    text-align: center;
+    width: 100% !important;
+    display: block;
+    color: gray;
+}

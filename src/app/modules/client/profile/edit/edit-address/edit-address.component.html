@@ -1,0 +1,41 @@
+<div class="content content-margintop rounded-3xl w-full mt-6 pb-10 justify-center box-shadow-base">
+    <div class=" py-4 pb-0 px-5 grid grid-cols-6">
+        <h1 class="col-span-6 font-bold text-center text-orange-400 text-3xl">
+            <span class="text-gray-400">  Editar</span> {{addressObj.name}}
+        </h1>
+
+    </div>
+    <div class="rounded-3xl pyc-1 mx-6  h-2 justify-center box-shadow-base">
+    </div>
+    <div class=" px-10">
+        <form [formGroup]="form" (ngSubmit)="updateAddress()">
+            <div class="form-group">
+                <label class=" w-full text-center font-bold text-orange my-4 block">Locación</label>
+                <input class="text-input " placeholder="Casa, Oficina, Departamento" formControlName="name">
+            </div>
+            <div class="form-group">
+                <label class=" w-full text-center font-bold text-orange my-4 block">Calle y Número</label>
+                <input type="text" class="text-input" placeholder="Calle y Número" formControlName="street">
+            </div>
+            <div class="form-group">
+                <label class=" w-full text-center font-bold text-orange my-4 block">Ciudad</label>
+                <input type="text" class="text-input" placeholder="Ciudad" formControlName="city">
+            </div>
+            <div class="form-group">
+                <label class=" w-full text-center font-bold text-orange my-4 block">Estado</label>
+                <input type="text" class="text-input" placeholder="Estado" formControlName="state">
+            </div>
+            <div class="form-group">
+                <label class=" w-full text-center font-bold text-orange my-4 block">Zip</label>
+                <input type="text" class="text-input" placeholder="Zip" formControlName="zip">
+            </div>
+            <div class="form-group">
+                <label class=" w-full text-center font-bold text-orange my-4 block">Pais</label>
+                <input class="text-input" placeholder="Pais" formControlName="country">
+            </div>
+
+            <button type="submit" class=" single_add_button mt-5 ">Guardar Cambios</button>
+        </form>
+        <button (click)="delete()" class="single_add_button_red mt-5"> Eliminar Dirección </button>
+    </div>
+</div>

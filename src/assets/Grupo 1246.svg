@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22.074" height="24.914" viewBox="0 0 22.074 24.914">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #9b9b9b;
+      }
+    </style>
+  </defs>
+  <g id="Grupo_1246" data-name="Grupo 1246" transform="translate(0 0)">
+    <g id="Grupo_1245" data-name="Grupo 1245" transform="translate(0 0)">
+      <path id="Trazado_1146" data-name="Trazado 1146" class="cls-1" d="M294.44,1149.193a.95.95,0,0,1-.543-1.014,9.693,9.693,0,0,1,7.958-9.254,12.075,12.075,0,0,1,1.681-.142c1-.022,1.994-.036,2.99,0a9.7,9.7,0,0,1,9.443,9.419.921.921,0,0,1-.542.99Z" transform="translate(-293.897 -1124.28)"/>
+      <path id="Trazado_1147" data-name="Trazado 1147" class="cls-1" d="M368.525,914c.5.108,1.014.176,1.5.332a6.6,6.6,0,1,1-2.767-.289,1.629,1.629,0,0,0,.189-.043Z" transform="translate(-356.949 -914)"/>
+    </g>
+  </g>
+</svg>

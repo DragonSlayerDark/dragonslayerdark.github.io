@@ -1,0 +1,17 @@
+<div class="">
+
+</div>
+
+<div *ngFor="let item of INFO" class="grid grid-cols-4 my-3 mt-8 cursor-pointer" [routerLink]="item.route">
+    <div class="flex justify-center items-center border-4 object-top rounded-full h-16 w-16 col-span-1" [ngStyle]="{'borderColor': item.color}">
+        <img [src]="item.img">
+    </div>
+    <div class="col-span-3">
+        <div class="font-bold text-lg" [ngStyle]="{'color': item.color}">
+            {{ item.title }}
+        </div>
+        <div class="text-gray-400 text-sm">
+            {{ item.info }}
+        </div>
+    </div>
+</div>

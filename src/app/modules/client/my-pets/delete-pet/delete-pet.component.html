@@ -1,0 +1,64 @@
+<div class="content rounded-3xl w-full mt-6 justify-center box-shadow-base" *ngIf="pet$ | async as pet">
+    <div class=" py-4 px-10 grid grid-cols-6">
+        <h1 class="col-span-6 font-bold text-center text-orange-400 text-3xl">
+            <span class="text-gray-400">  Borrar a</span> {{pet.attributes.name}}
+        </h1>
+    </div>
+    <div class="rounded-3xl pyc-1 mx-6  h-2 justify-center box-shadow-base">
+    </div>
+    <div class="pt-4 px-11">
+
+
+
+        <div class="grid grid-cols-4 my-10 mt-8 cursor-pointer" (click)="deletePet()">
+            <div class="flex justify-center items-center  object-top rounded-full h-16 w-16 col-span-1">
+                <img class="w-20 h-20 rounded-full absolute" src="assets\icons\delete.svg" />
+            </div>
+            <div class="col-span-3">
+                <div class="font-bold text-lg text-orange">
+                    Eliminar
+                </div>
+                <div class="text-gray-400 text-sm">
+                    Esta opción elimina permanentemente a tu amscota de tu perfíl.
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="pet.attributes.memorial === false || pet.attributes.memorial === null" class="grid grid-cols-4 my-10 mt-8 cursor-pointer" (click)="memorial(res = true)">
+            <div class="flex justify-center items-center  object-top rounded-full h-16 w-16 col-span-1">
+                <img class="w-20 h-20 rounded-full absolute" src="assets\icons\memorial.svg" />
+            </div>
+            <div class="col-span-3">
+                <div class="font-bold text-lg text-orange">
+                    Memorial
+                </div>
+                <div class="text-gray-400 text-sm">
+                    Perder un amigo es duro conservala siempre en tu recuerdo con este memorial
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="pet.attributes.memorial === true || pet.attributes.memorial === null" class="grid grid-cols-4 my-10 mt-8 cursor-pointer" (click)="memorial(res = false)">
+            <div class="flex justify-center items-center  object-top rounded-full h-16 w-16 col-span-1">
+                <img class="w-20 h-20 rounded-full absolute" src="assets\icons\activate.svg" />
+            </div>
+            <div class="col-span-3">
+                <div class="font-bold text-lg text-orange">
+                    Re-activar
+                </div>
+                <div class="text-gray-400 text-sm">
+                    Esta opción reactiva de nuevo tu mascota remueve el estado Memorial
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- <button *ngIf="pet.attributes.memorial === false || pet.attributes.memorial === null" class=" w-full p-2 bg-gray-500 text-white font-bold rounded-full" (click)="memorial(res = true)">Memorial</button> -->
+        <!-- <button *ngIf="pet.attributes.memorial === true || pet.attributes.memorial === null" class=" w-full p-2 bg-gray-500 text-white font-bold rounded-full" (click)="memorial(res = false)">Quitar Memorial</button> -->
+        <button class=" w-full p-2 bg-gray-500 text-white font-bold rounded-full mb-12 " (click)="cancel()">Cancelar</button>
+
+    </div>
+</div>

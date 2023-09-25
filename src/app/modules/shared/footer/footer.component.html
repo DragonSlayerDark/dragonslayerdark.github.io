@@ -1,0 +1,18 @@
+<!-- <div class="grid grid-cols-5 p-3 pb-0">
+    <div class="pb-4" [routerLink]="[icon.route]" routerLinkActive="active" *ngFor="let icon of ICONS">
+        <div class="flex justify-center items-center mb-2"> <img [src]="icon.src" class="h-6 "></div>
+        <div class="flex justify-center items-center "> <span class="text-gray-400 text-xs ">{{icon.label}}</span></div>
+    </div>
+</div> -->
+
+<div class="grid grid-cols-5 p-3 pb-0">
+  <div class="pb-4" *ngFor="let icon of ICONS; let i = index;">
+    <div class="flex justify-center items-center mb-2" [routerLink]="[icon.route]"
+      [ngClass]="{ 'active': activeIconIndex === i }" (click)="setActiveIcon(i)">
+      <img  [src]="icon.src" class="h-6 ">
+    </div>
+    <div class="flex justify-center items-center ">
+      <span class="text-gray-400 text-xs ">{{icon.label}}</span>
+    </div>
+  </div>
+</div>

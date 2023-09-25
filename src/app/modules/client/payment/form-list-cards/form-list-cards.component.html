@@ -1,0 +1,44 @@
+<form [formGroup]="form">
+    <div class="overflow-x-auto relative">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th *ngIf="selectCard">
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Tipo
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Prefix
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Últimos 4 dígitos
+                    </th>
+                    <th *ngIf="!selectCard"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let card of cards$ | async" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        *ngIf="selectCard">
+                        <input type="radio" [value]="card.source" formControlName="selectedCard">
+                    </td>
+                    <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ card.type }}
+                    </td>
+                    <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ card.card.cardPrefix | cardPrefix }}
+                    </td>
+                    <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{card.card.lastFourDigits}}
+                    </td>
+                    <td *ngIf="!selectCard" class="px-2">
+                        <fa-icon class="mx-1" (click)="edit(card.source)" [icon]="faEdit"></fa-icon>
+                        <fa-icon class="mx-1" (click)="delete(card.source)" [icon]="faDelete"></fa-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="submit" (click)="selectedCard()" *ngIf="showContinueButton">Continuar</button>
+</form>

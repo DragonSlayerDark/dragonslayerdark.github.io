@@ -1,0 +1,12 @@
+<ng-container *ngIf="{
+  commercials: commercials$ | async
+} as data">
+    <section class="carousel" aria-label="Gallery">
+        <ol class="carousel__viewport">
+            <li *ngFor="let item of data.commercials; let i = index" id="carousel__slide2" tabindex="0" class="carousel__slide">
+                <img class="img" [src]="item.attributes.publicity.data?.attributes?.url | image" alt="">
+                <div class="carousel__snapper"></div>
+            </li>
+        </ol>
+    </section>
+</ng-container>

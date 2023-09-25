@@ -1,0 +1,76 @@
+<!-- Por lo que se me comento, este menu solo debe mostrarse en la lista inicial -->
+<div class="content rounded-3xl w-full pt-6 pb-24 justify-center box-shadow-base" style="margin-top: -60px;">
+    <app-advertising></app-advertising>
+    <div class="grid grid-cols-12">
+        <div class="flex justify-center col-span-1 ">
+            <img class=" w-6/12 my-auto relative" src="assets/carrousel-left-arrow.svg">
+        </div>
+        <div class=" col-span-10">
+            <div class=" flex overflow-x-auto my-3 mt-4 scrollbar-hide">
+                <div (click)="selectPetType(item.id, item.attributes.name)" class=" flex-shrink-0  mx-3 grid items-center justify-center" *ngFor="let item of petTypes$ | async">
+                    <img class="w-20 h-20 outshadow rounded-full" [src]="item.attributes.icon.data?.attributes?.url | image">
+                    <span class="text-blue  text-xs text-center my-3 font-bold">{{item.attributes.name}}</span>
+                </div>
+                <div class="flex-shrink-0  mx-6 grid items-center justify-center">
+                    <img class=" outshadow rounded-full w-20 h-20" src="assets/icons/store.svg ">
+                    <span class="text-blue  text-xs text-center my-3 font-bold">Tienda Completa</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center col-span-1">
+            <img class="w-6/12 my-auto relative" src="assets/carrousel-right-arrow.svg">
+        </div>
+
+    </div>
+
+    <div class="w-full text-center p-4 shadow-inner text-gray-400 font-bold">
+        Productos para
+        <span class="text-purple"> Tu mascota</span>
+    </div>
+    <span class="divider w-full mx-auto h-2 block rounded-lg "></span>
+    <!--  -->
+    <ng-container *ngIf="{
+    products: products | async
+} as data">
+
+        <div class="p-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div *ngFor="let item of data.products">
+
+
+                <div (click)="selectProduct(item.id)" class="grid grid-cols-12 px-6 pt-6 pb-2">
+                    <div class="col-span-3 flex flex-col text-center">
+                        <img class="m-auto h-32 w-32 object-cover" [src]="item.attributes['image'].data?.attributes?.url | image">
+
+                    </div>
+
+
+                    <div class="col-span-8 flex flex-col p-3 px-4">
+                        <span class="text-purple font-bold"> {{ item.attributes.name }}  </span>
+                        <span class="my-2 text-gray-500 text-xs ">{{ item.attributes.description}} </span>
+                        <span class=" text-orange font-bold text-xl  ">${{ item.attributes.subtotal }}   </span>
+
+                    </div>
+
+                    <div class="col-span-1 flex justify-center  font-bold">
+                        <img class=" w-3 my-auto relative max-w-md" src="assets/arrow-right.svg">
+                    </div>
+
+                </div>
+
+                <div>
+                    <div class="w-3/4 mx-auto mb-8">
+                        <button (click)="addToCart(item)" class=" single_add_button ">Agregar a Carrito</button>
+                    </div>
+                </div>
+
+
+                <span class="divider w-11/12 mx-auto h-2 block rounded-lg "></span>
+            </div>
+        </div>
+
+        <div class="flex justify-between p-10">
+            <button (click)="previousPage()" *ngIf="pageNumber != 1" class="p-2 text-white text-sm bg-orange-400 rounded-full w-2/6 outshadow"> < Anterior</button>
+            <button (click)="nextPage()" class="p-2 text-white text-sm bg-orange-400 rounded-full w-2/6 outshadow" *ngIf="data.products.length >= 10">Siguiente ></button>
+        </div>
+    </ng-container>
+</div>

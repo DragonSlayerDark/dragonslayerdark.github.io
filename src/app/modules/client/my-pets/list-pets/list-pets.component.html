@@ -1,0 +1,108 @@
+<div class="content rounded-3xl w-full mt-6 justify-center box-shadow-base" *ngIf="pet$ | async as pet">
+    <div *ngIf="pet.attributes.memorial === false || pet.attributes.memorial === null; else memorial" class="pt-4 px-1 pb-20">
+
+        <div class="px-10">
+            <div class="grid grid-cols-6">
+                <h1 class="col-span-3 font-bold text-center text-orange-400 text-3xl">
+                    {{pet.attributes.name}}
+                </h1>
+                <div class="col-span-3 text-center text-gray-400 pt-2">
+                    Edad - {{calculatedAge}}
+                </div>
+            </div>
+            <div class="grid grid-cols-2 my-3" [routerLink]="['/my-pets', 'vaccine-card', pet.id]">
+                <div class="grid items-center justify-center">
+                    <span class="text-gray-400 text-xs text-center">Vacunación</span>
+                    <img class=" outshadow rounded-full w-full p-6 " src="assets/icons/vac.svg ">
+                    <span class="text-gray-400 text-xs text-center my-3">75%</span>
+                </div>
+                <div class="grid items-center justify-center">
+                    <span class="text-gray-400 text-xs text-center">Desparasitación</span>
+                    <img class=" outshadow rounded-full w-full p-6 " src="assets/icons/food.svg ">
+                    <span class="text-gray-400 text-xs text-center my-3">75%</span>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-3xl pyc-1 mx-6  h-2 justify-center box-shadow-base">
+        </div>
+        <div class="px-10 ">
+            <div class=" w-full font-bold text-gray-400 text-center text-sm py-6">
+                INFORMACIÓN GENERAL
+            </div>
+            <div class="grid grid-cols-2 gap-2 mb-8 ">
+                <div class="text-orange-400 ">
+                    Raza
+                </div>
+                <div class="text-gray-400 ">
+                    {{ pet.attributes.pet_breed.data['attributes'].name }}
+                </div>
+                <!-- <div class="text-orange-400 ">
+                    Segunda Raza
+                </div>
+                <div class="text-gray-400 ">
+                    {{ pet.attributes.pet_second_breed?.data != null ? pet.attributes.pet_second_breed.data['attributes'].name : 'N/A' }}
+                </div> -->
+                <div class="text-orange-400 ">
+                    Fecha Nac.
+                </div>
+                <div class="text-gray-400 ">
+                    {{ pet.attributes.dob | date: 'dd MMMM yyyy' }}
+                </div>
+                <div class="text-orange-400 ">
+                    Tamaño
+                </div>
+                <div class="text-gray-400 ">
+                    {{pet.attributes.pet_size | petSize}}
+                </div>
+            </div>
+        </div>
+        <div class=" grid grid-cols-2 gap-4 drop-shadow-xl mx-4 ">
+            <button class="p-2 text-white text-sm bg-orange-400 rounded-full w-full outshadow " [routerLink]="['/my-pets', 'edit-pet', pet.id]">
+                Editar
+            </button>
+            <button class="outshadow p-2 text-white text-sm bg-cyan-400 rounded-full w-full outshadow" [routerLink]="['/my-pets', 'delete-pet', pet.id]">
+                Borrar/Memorial
+            </button>
+        </div>
+    </div>
+    <!-- Template en caso de tener memorial -->
+    <ng-template #memorial>
+        <div class="pt-4 px-1 pb-20">
+
+
+
+
+            <div class="px-10 ">
+                <img class="w-full p-6 pb-2" src="assets/icons/rippet.svg" alt="">
+                <h1 class="col-span-6 font-bold text-center text-orange-400 text-3xl">
+                    {{pet.attributes.name}}
+                </h1>
+                <div class=" w-full font-bold text-gray-400 text-center text-sm py-6">
+                    DESCANSA EN PAZ
+                </div>
+                <div class="grid grid-cols-2 gap-2 mb-8 ">
+                    <div class="text-orange-400 ">
+                        Fecha Nac.
+                    </div>
+                    <div class="text-gray-400 ">
+                        {{ pet.attributes.dob | date: 'dd MMMM yyyy' }}
+                    </div>
+                    <div class="text-orange-400 ">
+                        Fecha fallecimiento
+                    </div>
+                    <div class="text-gray-400 ">
+                        {{pet.attributes.fallecimiento | date: 'dd MMMM yyyy'}}
+                    </div>
+
+                </div>
+            </div>
+            <div class="rounded-3xl pyc-1 mx-6  h-2 justify-center box-shadow-base">
+            </div>
+            <div class=" grid grid-cols-1 gap-4  mx-4 ">
+                <button class="p-2 my-4 drop-shadow-xl text-white text-sm bg-orange-400 rounded-full w-full " [routerLink]="['/my-pets', 'delete-pet', pet.id]">
+            Editar
+          </button>
+            </div>
+        </div>
+    </ng-template>
+</div>

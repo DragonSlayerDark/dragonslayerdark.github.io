@@ -1,0 +1,13 @@
+<!-- <img class="w-full" style="margin-top: 0px;" src="assets/notifications.png"> -->
+
+<ng-container *ngIf="notifications$ | async as data">
+    <div class="content content-margintop rounded-3xl w-full py-4 my-6 justify-center box-shadow-base">
+        <ng-container *ngFor="let notification of data; let i = index">
+        
+            <app-notification-chip [notification]="notification">
+            
+            </app-notification-chip>
+            
+        </ng-container>
+    </div>
+</ng-container>

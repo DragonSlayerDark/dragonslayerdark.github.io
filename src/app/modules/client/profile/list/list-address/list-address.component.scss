@@ -1,0 +1,20 @@
+[type=radio]+div {
+    cursor: pointer;
+}
+
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+[type=radio]:checked+div {
+    border-left: 20px solid #FCAF3D;
+    max-height: 80px;
+    width: 100%;
+    border-top-left-radius: 12px;
+    width: 100%;
+    border-bottom-left-radius: 12px;
+    // box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.6);
+}

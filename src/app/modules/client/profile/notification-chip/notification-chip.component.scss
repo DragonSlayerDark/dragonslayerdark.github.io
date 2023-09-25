@@ -1,0 +1,12 @@
+.circle-pet {
+    border-radius: 50%;
+    background-color: black;
+    border: 7px green solid;
+    width: 25%;
+    height: 25%;
+}
+
+.pet-item {
+    min-height: 80px !important;
+    max-height: fit-content !important;
+}

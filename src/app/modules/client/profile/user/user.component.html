@@ -1,0 +1,100 @@
+<div class="content content-margintop rounded-3xl w-full py-4 mt-6 justify-center box-shadow-base">
+    <span class="text-purple font-bold text-sm  block text-center mt-4 mb-4">
+      Mis Mascotas
+  </span>
+    <div class="flex justify-center">
+        <app-pets [showAdd]="true"></app-pets>
+    </div>
+    <div class=" grid-cols-4  w-full my-3 mt-8 text-gray-500">
+        <div [routerLink]="['/profile','petslist']" class="category-item grid grid-cols-12 ">
+            <div class="col-span-2">
+                <img class="min-w-fit w-3 my-auto relative" src="assets/icons/mis-mascotas.svg">
+            </div>
+            <div class="pl-2 col-span-9">
+                Mis Mascotas
+            </div>
+            <div class="col-span-1">
+                <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+            </div>
+        </div>
+
+        <div [routerLink]="['/profile','adresslist']" class="category-item grid grid-cols-12 ">
+            <div class="col-span-2">
+                <img class="min-w-fit w-3 my-auto relative" src="assets/icons/mis-direcciones.svg">
+            </div>
+            <div class="pl-2 col-span-9">
+                Mis Direcciones
+            </div>
+            <div class="col-span-1">
+                <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+            </div>
+        </div>
+
+        <div [routerLink]="['/profile','paymentslist']" class="category-item grid grid-cols-12 ">
+            <div class="col-span-2">
+                <img class="min-w-fit w-3 my-auto relative" src="assets/icons/mis-pagos.svg">
+            </div>
+            <div class="pl-2 col-span-9">
+                Mis Metodos de Pago
+            </div>
+            <div class="col-span-1">
+                <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+            </div>
+        </div>
+
+        <div [routerLink]="['/profile','orderlist']" class="category-item grid grid-cols-12 ">
+            <div class="col-span-2">
+                <img class="min-w-fit w-3 my-auto relative" src="assets/icons/mis-pedidos.svg">
+            </div>
+            <div class="pl-2 col-span-9">
+                Mis Pedidos
+            </div>
+            <div class="col-span-1">
+                <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+            </div>
+        </div>
+
+        <div [routerLink]="['/profile', 'ajustes']" class="category-item grid grid-cols-12 ">
+            <div class="col-span-2">
+                <img class="min-w-fit w-3 my-auto relative" src="assets/icons/mis-ajustes.svg">
+            </div>
+
+            <div class=" pl-2 col-span-9" (click)="showSettingsList = !showSettingsList">
+                Mis Ajustes
+            </div>
+            <div class="col-span-1">
+                <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+            </div>
+            <div *ngIf="showSettingsList">
+                <app-settings></app-settings>
+            </div>
+
+        </div>
+
+        <div [routerLink]="['/profile', 'notifications']" class="category-item grid grid-cols-12 ">
+            <div class="col-span-2">
+                <img class="min-w-fit w-3 my-auto relative" src="assets/icons/mis-notificaciones.svg">
+            </div>
+            <div class="pl-2 col-span-9">
+                Notificaciones
+            </div>
+            <div class="col-span-1">
+                <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+            </div>
+        </div>
+
+        <div class="category-item grid grid-cols-12 ">
+            <div class="col-span-2">
+                <img class="min-w-fit w-3 my-auto relative" src="assets/icons/log-out.svg">
+            </div>
+
+            <div class="pl-2 col-span-9" (click)="cerrarSesion()">
+                Cerrar Sesión
+            </div>
+            <div class="col-span-1">
+                <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+            </div>
+        </div>
+
+    </div>
+</div>

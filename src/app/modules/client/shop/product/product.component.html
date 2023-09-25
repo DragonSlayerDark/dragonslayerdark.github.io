@@ -1,0 +1,77 @@
+<ng-container *ngIf="product$ | async as product">
+
+    <div class="content content-margintop rounded-3xl w-full pt-6 pb-24 justify-center box-shadow-base">
+        <div class="header-category-items  text-lg grid grid-cols-11">
+            <div class="col-span-3 text-blue " routerLink="/shop/categories">{{product.attributes.pet_type.data['attributes'].name}}</div>
+            <div class="col-span-1 text-blue "> <img class=" mx-auto relative" src="assets/arrow-right.svg"></div>
+            <div class="col-span-3 text-blue " routerLink="/shop/sub-categories">{{product.attributes.category.data['attributes'].name}}</div>
+            <div class="col-span-1 text-blue "> <img class=" mx-auto relative" src="assets/arrow-right.svg"></div>
+            <div class="col-span-3 text-yellow " routerLink="/shop/sub-products">{{product.attributes.sub_category.data['attributes'].name}}</div>
+        </div>
+        <div class="p-5 grid grid-cols-1  gap-4">
+            <div *ngIf="selectedProductID && product$ | async as product">
+
+
+                <div class="grid grid-cols-1 px-6 py-6">
+                    <div class="col-span-1 flex flex-col text-center">
+                        <img class="m-auto h-32 w-32 object-cover" [src]="product.attributes['image'].data?.attributes?.url | image">
+
+                    </div>
+
+
+                    <div class="grid grid-cols-1 flex flex-col p-3 ">
+                        <div class=" col-span-1 text-lg text-center text-purple font-bold mt-3"> {{ product.attributes.name }} </div>
+                        <div class=" col-span-1 text-center text-gray-400"> {{ product.attributes.brand}} </div>
+                        <div class=" col-span-1 text-2xl text-center text-orange font-bold mb-3"> {{ product.attributes.subtotal | currency }} </div>
+                        <div class=" col-span-1 text-center text-gray-400 mb-6"> {{ product.attributes.fullDescription}} </div>
+
+
+                        <span class="divider w-full mx-auto h-2 block rounded-lg "></span>
+
+                        <div class=" grid grid-cols-2 mt-4 text-center font-bold text-gray-400">
+                            <div class=" col-span-1"> Cantidad </div>
+                            <div class=" col-span-1"> Tamaño </div>
+
+                        </div>
+                        <div class=" grid grid-cols-2 my-5">
+                            <div class=" col-span-1">
+
+                                <div class="grid grid-cols-6 shadow-lg rounded-full">
+
+                                    <div class=" col-span-2 modify_cart_button rounded-l-full">
+                                        <button class="p-2 text-white" (click)="counter('subtract')">-</button>
+                                    </div>
+                                    <div class=" col-span-2 text-orange text-center font-bold text-md flex items-center justify-center">
+                                        <span class="text-center"> {{ quantity }}</span>
+                                    </div>
+
+                                    <div class=" col-span-2 modify_cart_button rounded-r-full">
+                                        <button class="p-2 text-white" (click)="counter('add')">+</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class=" col-span-1 text-center ">
+
+                                <span class="my-2 text-orange text-lg w-full text-center font-bold ">{{ product.attributes.size}} </span>
+                            </div>
+
+                        </div>
+
+                        <span class="divider w-full mx-auto h-2 block rounded-lg "></span>
+
+
+                    </div>
+                    <button (click)="addToCart(product)" class=" single_add_button mt-6 ">Agregar a carrito</button>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</ng-container>

@@ -1,0 +1,133 @@
+<ng-container [ngSwitch]="router.url">
+    <ng-container *ngSwitchCase="['/profile/user', '/profile/editUser'].includes(router.url) ? router.url : !router.url">
+        <div class="grid grid-cols-6 gap-4 m-6 mt-8 mb-0 ">
+            <div class="col-span-1 flex items-center justify-center">
+                <img class="h-7" src="assets/back.svg" alt="" (click)="back()">
+            </div>
+            <div class="col-span-4 flex items-center justify-center">
+                <h1 class="font-bold text-2xl text-center  " style="color: #ffffff">
+                    Mi Perfil
+                </h1>
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                <span class="w-20"></span>
+            </div>
+
+        </div>
+
+        <div class=" grid grid-cols-12 gap-4 m-2" *ngIf="router.url !== '/profile/editUser'" [routerLink]="['/profile/editUser']">
+            <div class="col-span-4">
+                <div class="  w-32  h-32 rounded-full flex justify-center items-center m-auto" style="background-color:#ffffff; border: solid 5px #FCAF3D;">
+                    <img class="w-20" src="assets/Grupo 1246.svg">
+                </div>
+            </div>
+            <div class="col-span-8  pt-0">
+                <span class="font-bold text-xl text-center w-full block  " style="color: #ffffff">
+                    {{user?.firstName}} {{ user?.lastName }}
+               </span>
+                <span class=" text-medium text-sm w-full block text-center" style="color: #ffffff">
+                   {{ user?.email }}
+               </span>
+
+                <button style="margin-left:auto;" class="max-w-fit mx-auto single_add_button my-4 px-6 p-4 block">Editar Perfil</button>
+            </div>
+        </div>
+    </ng-container>
+    <!-- Header Para componente direcciones -->
+    <ng-container *ngSwitchCase="['/profile/adresslist', '/profile/createAddress', '/profile/editAddress/'+ addressId].includes(router.url) ? router.url : !router.url">
+        <div class="grid grid-cols-6 gap-4 m-6 mt-8 mb-0 ">
+            <div class="col-span-1 flex items-center justify-center">
+                <img class="h-7" src="assets/back.svg" alt="" (click)="back()">
+            </div>
+            <div class="col-span-4 flex items-center justify-center">
+                <h1 class="font-bold text-2xl text-center  " style="color: #ffffff">
+                    Mis Direcciones
+                </h1>
+            </div>
+            <div [routerLink]="['/profile/createAddress']" class="col-span-1 flex items-center justify-center">
+                <img class="h-10 w-20 " src="assets/add.svg" alt="">
+            </div>
+        </div>
+    </ng-container>
+    <!-- Header para componente de lista de mascotas -->
+    <ng-container *ngSwitchCase="'/profile/petslist'">
+        <div class="grid grid-cols-6 gap-4 m-6 mt-8 mb-0 ">
+            <div class="col-span-1 flex items-center justify-center">
+                <img class="h-7" src="assets/back.svg" alt="" (click)="back()">
+            </div>
+            <div class="col-span-4 flex items-center justify-center">
+                <h1 class="font-bold text-2xl text-center  " style="color: #ffffff">
+                    Mis Mascotas
+                </h1>
+            </div>
+            <div [routerLink]="['/add-pet']" class="col-span-1 flex items-center justify-center">
+                <img class="h-10 w-20" src="assets/add.svg" alt="">
+            </div>
+        </div>
+    </ng-container>
+    <!-- Header para componente de metodos de pago -->
+    <ng-container *ngSwitchCase="'/profile/paymentslist'">
+        <div class="grid grid-cols-6 gap-4 m-6 mt-8 mb-0 ">
+            <div class="col-span-1 flex items-center justify-center">
+                <img class="h-7" src="assets/back.svg" alt="" (click)="back()">
+            </div>
+            <div class="col-span-4 flex items-center justify-center">
+                <h1 class="font-bold text-2xl text-center  " style="color: #ffffff">
+                    Mis Metodos de Pago
+                </h1>
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                <span class="w-20"></span>
+            </div>
+        </div>
+    </ng-container>
+    <!-- Header para componente de pedidos -->
+    <ng-container *ngSwitchCase="'/profile/orderlist'">
+        <div class="grid grid-cols-6 gap-4 m-6 mt-8 mb-0 ">
+            <div class="col-span-1 flex items-center justify-center">
+                <img class="h-7" src="assets/back.svg" alt="" (click)="back()">
+            </div>
+            <div class="col-span-4 flex items-center justify-center">
+                <h1 class="font-bold text-2xl text-center  " style="color: #ffffff">
+                    Mis Pedidos
+                </h1>
+            </div>
+            <div [routerLink]="['/shop/products']" class="col-span-1 flex items-center justify-center">
+                <img class="h-10 w-20" src="assets/add.svg" alt="">
+            </div>
+        </div>
+    </ng-container>
+    <!-- Header para componente de ajustes -->
+    <ng-container *ngSwitchCase="['/profile/ajustes', '/profile/editPassword'].includes(router.url) ? router.url : !router.url">
+        <div class="grid grid-cols-6 gap-4 m-6 mt-8 mb-0 ">
+            <div class="col-span-1 flex items-center justify-center">
+                <img class="h-7" src="assets/back.svg" alt="" (click)="back()">
+            </div>
+            <div class="col-span-4 flex items-center justify-center">
+                <h1 class="font-bold text-2xl text-center  " style="color: #ffffff">
+                    Mis Ajustes
+                </h1>
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+                <span class="w-20"></span>
+            </div>
+        </div>
+    </ng-container>
+    <!-- HEADER PARA COMPONENTE DE NOTIFICACIONES -->
+    <ng-container
+      *ngSwitchCase="['/profile/notifications'].includes(router.url) ? router.url : !router.url">
+      <div class="grid grid-cols-6 gap-4 m-6 mt-8 mb-0 ">
+        <div class="col-span-1 flex items-center justify-center">
+          <img class="h-7" src="assets/back.svg" alt="" (click)="back()">
+        </div>
+        <div class="col-span-4 flex items-center justify-center">
+          <h1 class="font-bold text-2xl text-center  " style="color: #ffffff">
+            Mis Notificaciones
+          </h1>
+        </div>
+        <div class="col-span-1 flex items-center justify-center">
+          <span class="w-20"></span>
+        </div>
+      </div>
+    </ng-container>
+</ng-container>

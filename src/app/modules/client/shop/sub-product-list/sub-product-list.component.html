@@ -1,0 +1,50 @@
+<ng-container *ngIf="{
+    products: products$ | async
+} as data">
+    <div class="content content-margintop rounded-3xl w-full pt-6 pb-24 justify-center box-shadow-base">
+        <div class="header-category-items  text-lg grid grid-cols-11">
+            <div class="col-span-3 text-blue " routerLink="/shop/categories">{{selectedPetTypeName}}</div>
+            <div class="col-span-1 text-blue "> <img class=" mx-auto relative" src="assets/arrow-right.svg"></div>
+            <div class="col-span-3 text-blue " routerLink="/shop/sub-categories">{{selectedCategoryName}}</div>
+            <div class="col-span-1 text-blue "> <img class=" mx-auto relative" src="assets/arrow-right.svg"></div>
+            <div class="col-span-3 text-yellow ">{{selectedSubCategoryName}}</div>
+        </div>
+
+
+
+        <div class="mt-2">
+            <div *ngFor="let item of data.products">
+
+                <div (click)="selectProduct(item.id)" class="grid grid-cols-12 px-6 py-6">
+                    <div class="col-span-3 flex flex-col text-center">
+                        <img class="m-auto h-32 w-32 object-cover" [src]="item.attributes['image'].data?.attributes?.url | image">
+
+                    </div>
+
+
+                    <div class="col-span-8 flex flex-col p-3 px-4">
+                        <span class="text-purple font-bold"> {{ item.attributes.name }}  </span>
+                        <span class="my-2 text-gray-500 text-xs ">{{ item.attributes.description}} </span>
+                        <span class=" text-orange font-bold text-xl  ">${{ item.attributes.subtotal }}</span>
+                    </div>
+
+                    <div class="col-span-1 flex justify-center  font-bold">
+                        <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+                    </div>
+
+                </div>
+                <div>
+                    <div class="w-3/4 mx-auto mb-8">
+                        <button (click)="addToCart(item)" class=" single_add_button ">Agregar a Carrito</button>
+                    </div>
+                </div>
+                <span class="divider w-11/12 mx-auto h-2 block rounded-lg "></span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</ng-container>

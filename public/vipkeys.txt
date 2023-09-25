@@ -1,0 +1,4 @@
+{
+    "publicKey":"BP3PXmOpJRum6yBC1Rzqor2bfnWGo4wGMSr0c51wrzH1HCM9clz1c6MvyrCVLIL3kToLmf_YzU2zLIY4Gde1tCw",
+    "privateKey":"2JiabfbMLd5Vm_gGblWdgUQWodd7X0Z_C1oYrOm3i88"
+}

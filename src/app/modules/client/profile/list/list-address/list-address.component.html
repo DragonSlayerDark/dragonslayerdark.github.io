@@ -1,0 +1,60 @@
+<ng-container *ngIf="selectAddress">
+    <div class="  px-10 grid grid-cols-6 ">
+        <h1 class="col-span-6 font-bold text-center text-orange-400 text-3xl">
+            <span class="text-gray-400">  Dirección de</span> entrega
+        </h1>
+
+
+    </div>
+    <div class="rounded-3xl pyc-1 mx-6  h-2 justify-center box-shadow-base">
+    </div>
+    <span class=" mx-auto my-4 text-center block text-gray-400 pb-10"> Seleccione una dirección para continuar </span>
+</ng-container>
+
+<form [formGroup]="form">
+    <div class="content content-margintop rounded-3xl w-full py-4 my-6 justify-center box-shadow-base">
+
+        <div *ngFor="let address of addresses$ | async" class="pet-item grid grid-cols-12 pr-6">
+
+
+            <label *ngIf="selectAddress" class="col-span-12 text-left ">
+            <input *ngIf="selectAddress" type="radio" [value]="address.id" formControlName="selectedAddress">
+
+            <div class="p-3 pl-10  col-span-12 text-left ">
+                <p>
+
+                    <span class=" text-purple font-bold">{{address.name}} </span> <br>
+                    <span class=" text-gray-400 font-normal">    {{address.street}} </span><br>
+                    <span class=" text-gray-400 font-normal">    {{ address.zip }}, {{ address.city }}, {{ address.state }}, {{ address.country }}  </span>
+
+
+                </p>
+            </div>
+
+          </label>
+
+            <div *ngIf="selectAddress==false" (click)="selecedtAddress(address)" class="p-3 pl-10  col-span-11 text-left ">
+                <p>
+
+                    <span class=" text-purple font-bold">{{address.name}} </span> <br>
+                    <span class=" text-gray-400 font-normal">    {{address.street}} </span><br>
+                    <span class=" text-gray-400 font-normal">    {{ address.zip }}, {{ address.city }}, {{ address.state }}, {{ address.country }}  </span>
+
+
+                </p>
+            </div>
+            <div *ngIf="selectAddress==false" class="col-span-1 flex items-center justify-center">
+                <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class=" grid grid-cols-12 pr-6">
+        <div class="p-3 pl-10 my-2 col-span-12 text-left ">
+            <button type="submit" class="single_add_button" (click)="selectedAddress()" *ngIf="showContinueButton">Continuar</button>
+        </div>
+    </div>
+
+</form>

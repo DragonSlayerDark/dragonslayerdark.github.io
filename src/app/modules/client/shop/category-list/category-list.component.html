@@ -1,0 +1,19 @@
+<ng-container *ngIf="{
+    categories: categories | async
+} as data">
+    <div class="content content-margintop rounded-3xl w-full pt-6 pb-24 justify-center box-shadow-base">
+        <div class="header-category-items text-yellow text-lg"> {{selectedPetTypeName}}</div>
+        <div class="mt-2">
+            <div class="category-item grid grid-cols-12 " (click)="selectCategory(item.id, item.attributes.name)" *ngFor="let item of data.categories">
+                <div class=" col-span-11">
+                    {{ item.attributes.name }}
+                </div>
+                <div class="col-span-1">
+                    <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-container>

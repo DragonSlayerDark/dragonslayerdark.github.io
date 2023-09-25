@@ -1,0 +1,6 @@
+<ng-container *ngIf="{
+    loading: loading$ | async
+} as data">
+    <router-outlet></router-outlet>
+    <app-loading [hidden]="!data.loading"></app-loading>
+</ng-container>

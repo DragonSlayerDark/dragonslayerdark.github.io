@@ -1,0 +1,41 @@
+<div class="content content-margintop rounded-3xl w-full mt-6 justify-center box-shadow-base">
+
+    <div class=" py-4 px-10 grid grid-cols-6">
+        <h1 class="col-span-6 font-bold text-center text-orange-400 text-3xl">
+            <span class="text-gray-400">  Editar</span> perfil usuario
+        </h1>
+
+    </div>
+
+    <div class="rounded-3xl pyc-1 mx-6  h-2 justify-center box-shadow-base">
+    </div>
+
+
+    <div class="pt-4 px-11">
+
+        <div class="flex justify-center" style=" padding-bottom: 150px;">
+            <form [formGroup]="form" (submit)="submit()" class="w-full p-3 max-w-lg">
+                <label class=" w-full text-center font-bold text-orange my-4 block">
+          Nombre(s)
+        </label>
+                <input class="text-input" type="text" formControlName="firstName" [value]="this.user.firstName | titlecase">
+                <label class=" w-full text-center font-bold text-orange my-4 block">
+          Apellido Paterno
+        </label>
+                <input class="text-input" type="text" formControlName="lastName" [value]="this.user.lastName | titlecase">
+                <label class=" w-full text-center font-bold text-orange my-4 block">
+            Apellido Materno
+          </label>
+                <input class="text-input" type="text" formControlName="secondLastName" [value]="this.user.secondLastName | titlecase">
+                <label class=" w-full text-center font-bold text-orange my-4 block">
+          Correo
+        </label>
+                <input class="text-input" type="text" formControlName="email" [value]="this.user.email | titlecase">
+
+                <button class="single_add_button_orange mt-8" type="submit">
+        Editar Perfil
+      </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<ng-container *ngIf="{
+    orders: orders$ | async
+} as data">
+    <div class="content content-margintop rounded-3xl w-full py-4 my-6 justify-center box-shadow-base">
+        <div class="p-2 table-auto w-full">
+            <ng-container *ngIf="data.orders.length == 0">
+                <div routerLink="/shop" class="p-2 text-orange-300 text-lg text-center">
+                    <span>No hay ordenes.</span>
+                    <div class="flex justify-center items-center my-6">
+                        <div class="dashed col-span-1  h-20 w-20 rounded-full flex justify-center items-center">
+                            <img class="" src="assets/Grupo 1239.png">
+                        </div>
+                    </div>
+                    <a style="text-decoration:underline; font-weight: bold;">Realiza un pedido.</a>
+                </div>
+            </ng-container>
+
+            <div *ngFor="let order of data.orders" (click)="clickedElementEmit(order)">
+                <div class="pet-item grid grid-cols-12 pr-6" *ngIf="order.attributes.pet.data != null; else noPet">
+                    <div class=" col-span-4 ">
+                        <div *ngIf="order.attributes.pet.data['attributes']?.memorial === false || order.attributes.pet.data['attributes']?.memorial === null">
+                            <img *ngIf="order.attributes.pet.data['attributes']?.photo.data != null" [src]="order.attributes.pet.data['attributes']?.photo.data['attributes']?.url | image" class="h-20 w-20 rounded-full object-cover border-4 object-top align-middle" [ngStyle]="{'border-color': '#45B45A'}">
+                        </div>
+                        <div *ngIf="order.attributes.pet.data['attributes']?.memorial === true">
+                            <img *ngIf="order.attributes.pet.data['attributes']?.photo.data != null" [src]="order.attributes.pet.data['attributes']?.photo.data['attributes']?.url | image" class="h-20 w-20 rounded-full object-cover border-4 object-top align-middle" [ngStyle]="{'border-color': '#b3bdb5'}">
+                        </div>
+
+                    </div>
+                    <div class="mt-3 col-span-7 text-left ">
+                        <p>
+                            <span *ngIf="order.attributes.pet.data != null" class=" text-purple font-bold">{{order.attributes.pet.data['attributes'].name}} </span>
+                            <br> Total: <span class=" text-gray-400 font-normal"> {{ order.attributes.subtotal +
+                order.attributes.tax | currency }} </span><br> Fecha: <span class=" text-gray-400 font-normal">{{order.attributes.orderDate | date}} </span>
+                        </p>
+                    </div>
+
+                    <div class="col-span-1 flex items-center justify-center">
+                        <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+                    </div>
+                </div>
+                <!-- template en caso de que no haya pet -->
+
+                <ng-template #noPet>
+                    <div class="pet-item grid grid-cols-12 pr-6">
+                        <div class=" col-span-4 ">
+                            <img src="assets/icons/petimg.svg" class="h-20 w-20 rounded-full object-cover border-4 object-top align-middle" [ngStyle]="{'border-color': '#45B45A'}">
+                        </div>
+                        <div class="mt-3 col-span-7 text-left ">
+                            <p>
+                                <span class=" text-purple font-bold"> Mascota Borrada </span>
+                                <br> Total: <span class=" text-gray-400 font-normal"> {{ order.attributes.subtotal +
+                  order.attributes.tax | currency }} </span><br> Fecha: <span class=" text-gray-400 font-normal">{{order.attributes.orderDate | date}} </span>
+                            </p>
+                        </div>
+
+                        <div class="col-span-1 flex items-center justify-center">
+                            <img class=" w-3 my-auto relative" src="assets/arrow-right.svg">
+                        </div>
+                    </div>
+                </ng-template>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="data.orders.length != 0" class=" grid grid-cols-12 pr-6 pb-32">
+        <div class="px-3 pl-10 col-span-12 text-left ">
+            <button class=" single_add_button_orange " routerLink="/shop"> Nuevo Pedido </button>
+        </div>
+    </div>
+
+</ng-container>

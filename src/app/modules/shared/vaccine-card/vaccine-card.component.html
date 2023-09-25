@@ -1,0 +1,194 @@
+<ng-container *ngIf="{
+    pet: vaccineCard$ | async,
+    pet_entity: pet$ | async
+  } as data">
+  <div *ngIf="data.pet && data.pet_entity"
+    class="content rounded-3xl w-full mt-6 justify-center box-shadow-base ng-star-inserted pb-20">
+
+
+
+
+
+
+    <div class=" py-4 px-10 grid grid-cols-6">
+      <h1 class="col-span-6 font-bold text-center text-orange-400 text-3xl">
+        <span class="text-gray-400"> Vacunación de</span> {{ data.pet_entity.attributes.name }}
+      </h1>
+
+    </div>
+
+    <div class="rounded-3xl pyc-1 mx-6  h-2 justify-center box-shadow-base">
+    </div>
+
+    <div class="grid py-4 grid-cols-6 px-10">
+      <div class="col-span-2 text-left text-gray-400 pt-2 py-4">
+        <span class="text-orange-400"> Raza</span> <br> {{ data.pet_entity.attributes.pet_breed.data['attributes'].name
+        }}
+      </div>
+      <div class="col-span-2 text-center text-gray-400 pt-2">
+        <span class="text-orange-400"> Tamaño</span> <br> {{ data.pet_entity.attributes.pet_size | petSize }}
+      </div>
+      <div class="col-span-2 text-center text-gray-400 pt-2">
+        <span class="text-orange-400"> Sexo</span> <br> {{ data.pet_entity.attributes.gender | petGender }}
+      </div>
+    </div>
+
+
+
+    <div class="tabs mt-4">
+      <ul class="grid grid-cols-2 vaccine-header">
+        <li class="mx-1">
+          <a class="nav-link  vaccine-header-category" (click)="activeTab = 'tab1'; loadProductsOnSwitchBack()"
+            [ngClass]="{'active': activeTab === 'tab1'}">Cartilla de Vacunacion</a>
+        </li>
+        <li class="mx-1">
+          <a class="nav-link  vaccine-header-category" (click)="activeTab = 'tab2'"
+            [ngClass]="{'active': activeTab === 'tab2'}">Cartilla de Desparacitacion</a>
+        </li>
+      </ul>
+      <div class="tab-content mt-6">
+        <div *ngIf="activeTab === 'tab1'" class="tab-pane fade show active">
+          <!-- Tab 1 content -->
+          <div>
+            <!-- Code for displaying vaccines for Tab 1 -->
+            <div
+              class="grid md:grid-cols-3 md:gap-10 lg:grid-cols-4 lg:gap-10 grid-cols-1 gap-10 place-items-center p-3 ">
+
+              <ng-container *ngIf="data.pet.vaccine_card_nested">
+
+                <div *ngFor="let vaccine of data.pet.vaccine_card_nested.vaccines; let i = index" class="w-full">
+
+                  <ng-container *ngIf="isVaccineApplied(vaccine.id, data.pet.vaccine_card.applied, data.pet.vaccine_history ) as obj">
+                    <div class="w-full h-66  border-4 content box-shadow-base rounded-3xl p-1">
+                      <div>
+                        <div class="grid grid-cols-1 header-category-items text-yellow">
+                          <div class="col-span-1 text-lg">
+                            <span class="text-gray-400 "> Vacuna {{ i + 1 }}: </span> {{ vaccine.name }}
+                          </div>
+                        </div>
+
+                        <!-- <div *ngIf="!obj.applied" (click)="getDate(vaccine.id, obj.applied)"> -->
+                        <div *ngIf="!obj.applied" (click)="dateInputToggle(i, obj.applied)">
+                          <div class="p-2 text-orange-300 text-lg text-center">
+                            <span>Click para agregar vacuna. </span>
+                            <div class="flex justify-center items-center my-6">
+                              <div class="dashed col-span-1  h-20 w-20 rounded-full flex justify-center items-center">
+                                <img class="" src="assets/Grupo 1239.png">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="obj.applied" (click)="updateVaccine(vaccine.id, obj.applied)"
+                          class="flex h-40 justify-center my-4">
+                          <fa-icon class="text-lime-500 lg:text-8xl md:text-7xl md:mt-3 text-8xl mt-3"
+                            [icon]="faCheckCircle"></fa-icon>
+                        </div>
+
+                        <div class="grid grid-cols-2 header-category-items ">
+                          <div>
+                            <span class="text-gray-400 "> FECHA:</span>
+                            <!-- <input *ngIf="!obj.applied" type="date" id="date" (change)="getDate()" [value]="this.date" class="ml-1 font-sans text-orange-400 font-light"> -->
+                            <span *ngIf="obj.date" class="ml-1 font-sans text-orange-400 font-light"> {{obj.date}}
+                            </span>
+                            <span *ngIf="!obj.date" class="ml-1 font-sans text-orange-400 font-light"> N/A </span>
+                          </div>
+                          <div>
+                            <span class="text-gray-400 "> CEDULA:</span>
+                            <span *ngIf="!operador" class="ml-1 font-sans text-orange-400 font-light">{{obj.license}}
+                            </span>
+                            <span *ngIf="operador" id="license" class="ml-1 font-sans text-orange-400 font-light"> N/A
+                            </span>
+                          </div>
+                        </div>
+
+                        <mat-accordion>
+                          <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title class="text-gray-400 font-bold">
+                                 Historial de vacunación
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <div *ngFor="let historial of obj.history; let i = index" class="text-gray-400">
+
+
+                             <span class="bg-gray-100 p-3 text-gray-400   rounded-full block" > <span class="bg-orange-400 p-3 text-white rounded-full mx-3">{{ i + 1 }} </span> {{historial.product}}</span>
+                             Fecha:<span class="text-orange-400"> {{historial.date}} </span> Cédula: <span class="text-orange-400">{{historial.license}}</span> <br><br>
+                              <!-- {{historial.vaccine}} -->
+                            </div>
+
+
+                          </mat-expansion-panel>
+                        </mat-accordion>
+
+
+                        <!-- <div *ngFor="let item of data.pet.vaccine_history">
+                          {{item.date}}
+                          {{item.license}}
+                          {{item.vaccine.name}}
+                          {{item.product.name}}
+                        </div> -->
+
+                        <div class="vaccine-input-back" (click)="cancelInput($event)" *ngIf="!obj.applied && showDateInput && selectedVaccineIndex === i">
+                          <div id="vaccine-input-container">
+                            <div class="title"> Agregar</div>
+                            <div class="vaccine-content">
+                              <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 pt-4 pb-4">
+                                <div class="m-2">
+                                  <label class="text-center w-full block" for="date">Fecha de Aplicación </label><br>
+                                  <input type="date" id="date" (change)="getDate(vaccine.id, obj.applied)"
+                                    [value]="this.date"
+                                    class="ml-1 font-sans text-orange-400 font-light text-center w-full block">
+                                </div>
+
+                                <div class="m-2" *ngIf="!operador">
+                                  <label class="text-center w-full block" for="cedula">Cédula Profesional</label><br>
+                                  <input class="text-center w-full block" (change)="getCedula(i)" type="text"
+                                    [value]="obj.license" [id]="'cedula-' + i" placeholder="Cédula"><br>
+
+
+                                </div>
+                                <div class="m-2" *ngIf="!operador">
+                                  <label class="text-center w-full block" for="product">Producto aplicado</label><br>
+                                <select class="text-input text-center w-full block" [value]="obj.product" name="product" type="submit" id="product"
+                                  formControlName="product" (change)="onSelectChange($event, vaccinesId)">
+                                  <option value="" [selected]="true" disabled> Producto</option>
+                                  <option *ngFor="let product of productsVaccines$ | async" [value]="product.id">
+                                    {{ product.attributes.name }}
+                                  </option>
+                                </select>
+
+                                </div>
+                              </div>
+                              <div class="grid grid-cols-2">
+                                <button class="bg-orange-400" (click)="triggerUpdateVaccine(vaccine.id)">Aplicar</button>
+                                <button class="bg-gray-500" (click)="cancelInput()">Cancelar</button>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
+            </div>
+
+          </div>
+        </div>
+        <div *ngIf="activeTab === 'tab2'" class="tab-pane fade">
+          <!-- Tab 2 content -->
+          <div>
+            <!-- Code for displaying vaccines for Tab 2 -->
+            <app-dewormer></app-dewormer>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</ng-container>

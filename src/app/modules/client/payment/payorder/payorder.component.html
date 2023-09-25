@@ -1,0 +1,12 @@
+<ng-container *ngIf="{
+        products: products$ | async
+    } as data">
+    <ng-container *ngIf="data.products != null">
+        <payment [products]="data.products" [pathConfirmation]="'/payment/confirm'" [projectID]="projectID"
+            [userID]="userID" [showAmountNextToButton]="true" [metadata]="metadata" [email]="email"></payment>
+        <oxxo-button [metadata]="metadata" [products]="data.products" [pathConfirmation]="'confirm'" [projectID]="projectID"
+            [userID]="userID" class="p-2 bg-yellow-400 color: text-red-500 font-bold">
+            Pagar con Oxxo
+        </oxxo-button>
+    </ng-container>
+</ng-container>

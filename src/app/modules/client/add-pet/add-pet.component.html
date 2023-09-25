@@ -1,0 +1,179 @@
+<div class="content content-margintop rounded-3xl w-full mt-6 justify-center box-shadow-base ng-star-inserted">
+
+  <div class=" py-4 px-10 grid grid-cols-6">
+    <h1 class="col-span-6 font-bold text-center text-orange-400 text-3xl">
+      <span class="text-gray-400"> Agregar </span> Mascota
+    </h1>
+
+  </div>
+
+  <div class="rounded-3xl pyc-1 mx-6  h-2 justify-center box-shadow-base">
+  </div>
+
+  <form [formGroup]="addPetForm" (ngSubmit)="onSubmit(inputFile)" *ngIf="{
+    breeds:breeds$ | async
+} as data" class="p-4">
+
+    <mat-horizontal-stepper>
+      <mat-step>
+        <ng-template matStepLabel></ng-template>
+
+        <div class="form-group">
+          <div class="w-full text-center font-bold text-orange my-4">
+            Especie
+          </div>
+
+          <!-- NO PUEDES HARDCODEAR ESTO, POR FAVOR ARREGLALO -->
+
+          <div class=" grid grid-cols-2 gap-4">
+            <div (change)="loadPetBreeds(type.id)"  class=" col-auto " *ngFor="let type of petTypes$ | async">
+              <label [for]="type.attributes.name">
+                <input [id]="type.attributes.name" [value]="type.id" name="especie" type="radio"
+                  formControlName="especie">
+                <img class="w-8/12  m-auto rounded-full" [src]="type.attributes.icon.data?.attributes?.url | image">
+                <span class=" mx-auto my-2 text-center block text-gray-400">{{type.attributes.name}}</span>
+              </label>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="w-full text-center font-bold text-orange my-4">
+          Tamaño
+        </div>
+        <div class="form-group grid grid-cols-3 gap-4 h-32 relative pt-8 pb-4">
+
+          <div class="relative sizes">
+            <label for="chico" class="absolute inset-x-0 bottom-0">
+              <input id="chico" value="small" name="size" type="radio" formControlName="size">
+              <img class="w-3/12  m-auto " src="assets/pawprint.svg">
+              <span class=" mx-auto my-2 text-center block text-gray-400"> Chico</span>
+            </label>
+          </div>
+
+          <div class="relative sizes">
+            <label for="mediano" class="absolute inset-x-0 bottom-0">
+              <input id="mediano" value="medium" name="size" type="radio" formControlName="size">
+              <img class="w-6/12  m-auto " src="assets/pawprint.svg">
+              <span class=" mx-auto my-2 text-center block text-gray-400"> Mediano </span>
+            </label>
+          </div>
+
+          <div class="relative sizes">
+            <label for="grande" class="absolute inset-x-0 bottom-0">
+              <input id="grande" value="large" name="size" type="radio" formControlName="size">
+              <img class="w-9/12  m-auto " src="assets/pawprint.svg">
+              <span class=" mx-auto my-2 text-center block text-gray-400"> Grande </span>
+            </label>
+          </div>
+        </div>
+
+
+
+
+        <button (click)="checkPetBreed()" mat-button matStepperNext type="button"
+          class=" single_add_button ">Continuar</button>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Hola</ng-template>
+        <div class="mx-auto w-52 text-center ">
+          <span class=" w-full text-center font-bold text-orange my-4 block"> Fotografía</span>
+          <div class="relative w-52">
+
+            <!-- <div
+            class="w-52 h-52 group hover:bg-gray-200 opacity-60 rounded-full flex justify-center items-center cursor-pointer transition duration-500">
+            <label>
+
+              <input type="file" #inputFile>
+              <img class="w-52 h-52 rounded-full absolute" src="assets\icons\imgupload.svg" />
+              <input type="file" (change)="onFileSelected(inputFile.files)" #inputFile>
+              <img class="w-52 h-52 rounded-full absolute" [src]="url" />
+            </label>
+
+          </div> -->
+            <div class="mx-auto w-52 text-center ">
+              <div class="relative w-52">
+                <img class="w-52 h-52 rounded-full absolute" [src]="this.localImg" alt="assets\icons\imgupload.svg"
+                  onerror="this.src='assets/icons/imgupload.svg'" />
+                <div
+                  class="w-52 h-52 group hover:bg-gray-200 opacity-60 rounded-full flex justify-center items-center cursor-pointer transition duration-500">
+                  <div class="w-full h-full flex justify-center items-center" (click)="handleIconClick()">
+                    <img class="hidden group-hover:block w-12" src="assets\icons\imgupload.svg">
+                  </div>
+                  <input type="file" #inputFile id="inputFile" accept="image/jpeg,image/jpg,image/png"
+                    class="hidden opacity-0 absolute w-0 z-0" (change)="processImg()">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nombre" class=" w-full text-center font-bold text-orange my-4 block">Nombre</label>
+          <input id="nombre" class="text-input" name="nombre" type="text" placeholder="Nombre(s)"
+            formControlName="name">
+        </div>
+        <div class="form-group">
+          <label for="dob" class=" w-full text-center font-bold text-orange my-4 block">Fecha de nacimiento</label>
+          <input id="dob" (click)="checkPetBreed()" (change)="selectVaccineCard()" class="text-input" name="dob" type="date" formControlName="dob">
+        </div>
+
+        <div class="form-group">
+          <label for="raza" class="w-full text-center font-bold text-orange my-4 block">Raza</label>
+          <select (change)="checkPetBreed()" class="text-input" name="raza" id="raza" formControlName="raza">
+            <option value="" [selected]="true" disabled>Seleccione una raza</option>
+            <option value="{{pet_type_id}}">Mestizo</option>
+            <option *ngFor="let breed of data.breeds" [value]="breed.id">{{ breed.attributes.name }}</option>
+          </select>
+        </div>
+        <!-- <div class="form-group">
+          <label for="segundaraza">Segunda Raza</label>
+          <select (click)="checkPetBreed()" class="text-input" name="segundaraza" id="segundaraza"
+            formControlName="segundaraza">
+            <option disabled selected hidden>Segunda Raza</option>
+            <option *ngFor="let breed of data.breeds" [value]="breed.id">{{ breed.attributes.name }}</option>
+          </select>
+        </div> -->
+
+        <p class=" w-full text-center font-bold text-orange my-4 block">Genero</p>
+        <!--
+            <div class="form-group grid grid-cols-6 gap-4">
+                <div class=" col-span-3">
+                    <label>
+                      <input type="radio" value="male" formControlName="genero">
+                       <span>Macho</span>
+                     </label>
+
+                </div>
+                <div class=" col-span-3">
+                    <label>
+                      <input type="radio" value="female" formControlName="genero">
+                      <span>Hembra</span>
+                    </label>
+                </div>
+
+            </div> -->
+
+        <div class="form-group">
+          <select class="text-input" name="genero" id="genero" formControlName="genero">
+            <option selected>Selecciona un genero</option>
+            <option value="male"> Macho</option>
+            <option value="female"> Hembra</option>
+          </select>
+        </div>
+
+        <div class="form-group grid grid-cols-6 gap-4 mt-10 ">
+          <div class=" col-span-3 mb-20">
+            <button mat-button matStepperPrevious type="button" class=" single_add_button ">Regresar</button>
+          </div>
+          <div class=" col-span-3 mb-20">
+            <button class=" single_add_button_orange " type="submit">Guardar</button>
+          </div>
+        </div>
+
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+
+
+
+</div>

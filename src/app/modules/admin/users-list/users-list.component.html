@@ -1,0 +1,13 @@
+<table class="p-2">
+    <tr *ngFor="let user of users$ | async">
+        <td>
+            {{user.id}}
+        </td>
+        <td>
+            {{user.username}}
+        </td>
+        <td>
+            {{user.blocked}}
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,78 @@
+<ng-container *ngIf="{
+    products: products$ | async
+} as data">
+
+    <div class="content content-margintop rounded-3xl w-full pt-6 pb-24 justify-center box-shadow-base">
+
+        <ng-container *ngIf="data.products.length != 0; else elseTemplate">
+
+            <div class="header-category-items  text-lg grid grid-cols-1">
+                <div class=" col-span-1 text-yellow">
+                    {{cartItemsLength | async}} Productos(s)
+                </div>
+            </div>
+            <div class="p-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div *ngFor="let item of data.products">
+                    <div class="grid grid-cols-12 px-6 py-6">
+
+                        <div class="col-span-3 flex flex-col text-center">
+                            <img class="m-auto h-32 w-32 object-cover" [src]="item.product.attributes['image'].data?.attributes?.url | image">
+                        </div>
+
+                        <div class="col-span-8 flex flex-col p-3 px-4">
+                            <div class="text-purple font-bold text-lg">
+                                {{ item.product.attributes.name }} ({{ item.quantity }})
+                            </div>
+                            <div class=" text-orange font-bold text-md">
+                                Precio Unitario: {{ item.product.attributes.subtotal | currency }}
+                            </div>
+                            <div class=" grid grid-cols-2 gap-4 my-6">
+                                <div class=" col-span-1 grid grid-cols-6 shadow-lg rounded-full">
+                                    <div class=" col-span-2 modify_cart_button rounded-l-full">
+                                        <button (click)="modifyCart(item, false)" class="p-2 text-white">-</button>
+                                    </div>
+                                    <div class=" col-span-2 text-orange text-center font-bold text-md flex items-center justify-center">
+                                        <span class="text-center"> {{ item.quantity }} </span>
+                                    </div>
+                                    <div class=" col-span-2 modify_cart_button rounded-r-full">
+                                        <button (click)="modifyCart(item, true)" class="p-2 text-white">+</button>
+                                    </div>
+                                </div>
+                                <div class="col-span-1">
+                                    <button (click)="removeProduct(item.product.id)" class=" w-full p-2 bg-red-500 text-white font-bold rounded-full">Eliminar</button>
+                                </div>
+                            </div>
+                            <span class=" text-orange font-bold text-lg">Subtotal {{ item.product.attributes.subtotal * item.quantity | currency }} </span>
+                        </div>
+
+                    </div>
+                    <span class="divider w-11/12 mx-auto h-2 block rounded-lg "></span>
+                </div>
+            </div>
+            <div class="flex justify-center p-6 text-orange font-bold text-xl">
+                Total: {{ calculateTotal(data.products) | currency }}
+            </div>
+            <div class="flex justify-end p-4">
+                <button (click)="goToPayment()" class="single_add_button ">
+                Pagar ahora
+            </button>
+            </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+
+            <div routerLink="/shop" class="p-2 text-orange-300 text-lg text-center">
+                <span>Sin artículos en el carrito.</span>
+                <div class="flex justify-center items-center my-6">
+                    <div class="dashed col-span-1  h-20 w-20 rounded-full flex justify-center items-center">
+                        <img class="" src="assets/Grupo 1239.png">
+                    </div>
+                </div>
+                <a style="text-decoration:underline; font-weight: bold;">Agregar productos.</a>
+            </div>
+
+        </ng-template>
+
+
+    </div>
+
+</ng-container>
